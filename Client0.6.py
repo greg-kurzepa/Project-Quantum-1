@@ -205,7 +205,7 @@ class PlayerInput:
 cursor = pygame.cursors.compile(pygame.cursors.textmarker_strings) #loads text input cursor
 gameFont = pygame.font.Font(dire+"\\SuperMario256.ttf", 26)
 pygame.display.set_caption("Mario Party Py")
-hostIP = "192.168.1.96"
+hostIP = ""
 musicvolume = 0.5
 sfxvolume = 0.5
 ipInput = TextBox([256, 598], [537, 631], 15, hostIP)
