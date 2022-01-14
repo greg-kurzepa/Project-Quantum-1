@@ -1,0 +1,91 @@
+C:\Users\gregk>py -m bandit -r "C:\Users\gregk\source\repos\Project Quantum Server\Project Quantum Server"
+[main]  INFO    profile include tests: None
+[main]  INFO    profile exclude tests: None
+[main]  INFO    cli include tests: None
+[main]  INFO    cli exclude tests: None
+[main]  INFO    running on Python 3.8.1
+Run started:2020-09-26 19:45:51.934449
+
+Test results:
+>> Issue: [B403:blacklist] Consider possible security implications associated with pickle module.
+   Severity: Low   Confidence: High
+   Location: C:\Users\gregk\source\repos\Project Quantum Server\Project Quantum Server\Project_Quantum_Server.py:1
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_imports.html#b403-import-pickle
+1       import socket, threading, sys, os, random, pickle, time, collidePlayer, struct
+2
+3       #storess all current and historical connections during this runtime
+4       connections = []
+5       #stores all lobbies currently not in a game
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   Location: C:\Users\gregk\source\repos\Project Quantum Server\Project Quantum Server\Project_Quantum_Server.py:88
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html
+87                  self.client.close()
+88              except: pass
+89
+
+--------------------------------------------------
+>> Issue: [B322:blacklist] The input method in Python 2 will read from standard input, evaluate and run the resulting string as python source code. This is similar, though in many ways worse, then using eval. On Python 2, use raw_input instead, input is safe in Python 3.
+   Severity: High   Confidence: High
+   Location: C:\Users\gregk\source\repos\Project Quantum Server\Project Quantum Server\Project_Quantum_Server.py:120
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b322-input
+119         while True:
+120             temp = input()
+121             if temp == "x": break
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   Location: C:\Users\gregk\source\repos\Project Quantum Server\Project Quantum Server\Project_Quantum_Server.py:233
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html
+232                             try: client.sendall((":".join(["lobby list", str(lobbies[lobbyId].capacity), str(lobbies[lobbyId].waitingCount), ",".join([x.username for x in lobbies[lobbyId].connectedUsers]), ",".join([str(x.isOnline) for x in lobbies[lobbyId].connectedUsers])])).encode())
+233                             except: pass
+234                             data = client.recv(1024).decode()
+
+--------------------------------------------------
+>> Issue: [B301:blacklist] Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+   Severity: Medium   Confidence: High
+   Location: C:\Users\gregk\source\repos\Project Quantum Server\Project Quantum Server\Project_Quantum_Server.py:301
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b301-pickle
+300                     with dataLock:
+301                         playerInputs[playerId] = pickle.loads(dat) # data now contains player inputs. physics engine is below
+302
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   Location: C:\Users\gregk\source\repos\Project Quantum Server\Project Quantum Server\Project_Quantum_Server.py:393
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b311-random
+392
+393             randint = random.randint(10000, 99999)
+394             while any(Connection.username == randint for Connection in connections):
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   Location: C:\Users\gregk\source\repos\Project Quantum Server\Project Quantum Server\Project_Quantum_Server.py:395
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b311-random
+394             while any(Connection.username == randint for Connection in connections):
+395                 randint = random.randint(10000, 99999)
+396
+
+--------------------------------------------------
+
+Code scanned:
+        Total lines of code: 317
+        Total lines skipped (#nosec): 0
+
+Run metrics:
+        Total issues (by severity):
+                Undefined: 0.0
+                Low: 5.0
+                Medium: 1.0
+                High: 1.0
+        Total issues (by confidence):
+                Undefined: 0.0
+                Low: 0.0
+                Medium: 0.0
+                High: 7.0
+Files skipped (0):
