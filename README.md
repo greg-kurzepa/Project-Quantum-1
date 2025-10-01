@@ -4,6 +4,8 @@ Successfully tested multiplayer online platformer. You control a rectangle that 
 Video demonstration (this was most of what we managed):
 https://www.youtube.com/watch?v=c2hPXMTiFDw&ab_channel=TheTNTsheep
 
+<img width="821" height="430" alt="image" src="https://github.com/user-attachments/assets/295e90de-b2c8-4a7e-a805-970c3ea1676a" />
+
 Files of interest:  
 client code - client0.6.py  
 server code - linux-server/Project_Quantum_Server.py  
