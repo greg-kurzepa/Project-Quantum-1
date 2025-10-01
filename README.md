@@ -9,4 +9,4 @@ https://www.youtube.com/watch?v=c2hPXMTiFDw&ab_channel=TheTNTsheep
 Files of interest:  
 client code - client0.6.py  
 server code - linux-server/Project_Quantum_Server.py  
-physics engine (collision detection between player and tile) - linux-server/collidePlayer.py (this will need to be re-compiled for your system using cython.)
+physics engine (collision detection between player and tile) - linux-server/collidePlayer.py (this will need to be re-compiled for your system using cython).
